@@ -2,24 +2,27 @@ function playRound(playerSelection, computerSelection) {
   // your code here!
 }
 
+//Function that prompts the user for a selection
+//Then compares it to the accepted answers to validate it
 function userPlay() {
-  let userChoice = window.prompt("What's your choice?");
-  let userChoiceFormatted = userChoice.toLowerCase();
+  const userChoice = window.prompt("What's your choice?");
+  const userChoiceFormatted = userChoice.toLowerCase();
 
   if (
-    userChoiceFormatted == "rock" ||
-    userChoiceFormatted == "paper" ||
-    userChoiceFormatted == "scissors"
+    userChoiceFormatted === "rock" ||
+    userChoiceFormatted === "paper" ||
+    userChoiceFormatted === "scissors"
   ) {
-    window.alert("Excelente");
+    window.alert(`You chose ${userChoiceFormatted}`);
+    console.log(userChoiceFormatted);
   } else {
     window.alert("Please insert a valid play move");
-    let userChoice = window.prompt("What's your choice?");
-    let userChoiceFormatted = userChoice.toLowerCase();
+    userPlay();
   }
-  console.log(userChoiceFormatted);
 }
 
+//Function that picks randomly between items of an array
+//In this case between rock, paper & scissors
 function computerPlay() {
   const selectionOptions = ["rock", "paper", "scissors"];
   const handChosen = Math.floor(Math.random() * selectionOptions.length);
