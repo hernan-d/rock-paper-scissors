@@ -1,12 +1,18 @@
 const playerSelection = "paper";
 const computerSelection = computerPlay();
 
+let playerScore = 0;
+let computerScore = 0;
+
 //Gets and compare computer & player selections
 function playRound(playerSelection, computerSelection) {
   //Comparing selections to know who won
   //If tie
   if (playerSelection === computerSelection) {
     window.alert("Empate" + "\n" + playerSelection + "\n" + computerSelection);
+    //One point for each
+    playerScore += 1;
+    computerScore += 1;
   }
 
   //If player won
@@ -15,8 +21,9 @@ function playRound(playerSelection, computerSelection) {
     (playerSelection === "paper" && computerSelection == "rock") ||
     (playerSelection === "scissors" && computerSelection === "paper")
   ) {
-    window.alert("Player");
-    //playerScore += 1;
+    window.alert("Player" + "\n" + playerSelection + "\n" + computerSelection);
+    //Add point to player score
+    playerScore += 1;
   }
 
   //If computer won
@@ -25,18 +32,20 @@ function playRound(playerSelection, computerSelection) {
     (playerSelection === "scissors" && computerSelection == "rock") ||
     (playerSelection === "rock" && computerSelection === "paper")
   ) {
-    window.alert("Computer");
-    //computerScore += 1;
+    window.alert(
+      "Computer" + "\n" + playerSelection + "\n" + computerSelection
+    );
+    //Add point to computer score
+    computerScore += 1;
   }
 
-  //Player won > Add point to score
   //Computer won > Add point to score
   //Tie > One point for each
   //Checks score, if no one reached 5 play again
 
   //playRound();
 }
-playRound();
+playRound(playerSelection, "scissors");
 
 /* Commenting to stop prompt
 function userPlay() {
@@ -77,9 +86,6 @@ function computerPlay() {
 //const playerSelection = userPlay();
 //const playerSelection = "paper";
 //const computerSelection = computerPlay();
-
-let playerScore = 0;
-let computerScore = 0;
 
 //console.log(playRound(playerSelection, computerSelection));
 console.log("Player Choice: " + playerSelection);
