@@ -1,6 +1,3 @@
-const playerSelection = "paper";
-const computerSelection = computerPlay();
-
 let playerScore = 0;
 let computerScore = 0;
 
@@ -39,13 +36,41 @@ function playRound(playerSelection, computerSelection) {
     computerScore += 1;
   }
 
-  //Computer won > Add point to score
-  //Tie > One point for each
   //Checks score, if no one reached 5 play again
-
-  //playRound();
+  //If someone reached it, finish the game
+  if (computerScore >= 5 || playerScore >= 5) {
+    if (computerScore > playerScore) {
+      window.alert(
+        "Game finished!" +
+          "\n" +
+          "Computer won " +
+          computerScore +
+          " to " +
+          playerScore +
+          "!"
+      );
+    } else {
+      window.alert(
+        "Game finished!" +
+          "\n" +
+          "You won " +
+          playerScore +
+          " to " +
+          computerScore +
+          "!"
+      );
+    }
+  } else {
+    playRound(userPlay(), computerPlay());
+  }
 }
-playRound(playerSelection, "scissors");
+playRound(userPlay(), computerPlay());
+
+function userPlay() {
+  const selectionOptions = ["rock", "paper", "scissors"];
+  const handChosen = Math.floor(Math.random() * selectionOptions.length);
+  return selectionOptions[handChosen];
+}
 
 /* Commenting to stop prompt
 function userPlay() {
@@ -61,7 +86,7 @@ function userPlay() {
   ) {
     //If passed, tells you which is it, and stores it
     window.alert(`You chose ${userChoiceFormatted}`);
-    console.log(userChoiceFormatted);
+    return userChoiceFormatted;
   } else {
     //If not, gives you a warning and restarts the function
     window.alert(
@@ -80,15 +105,14 @@ function userPlay() {
 function computerPlay() {
   const selectionOptions = ["rock", "paper", "scissors"];
   const handChosen = Math.floor(Math.random() * selectionOptions.length);
-  console.log("Computer Choice: " + selectionOptions[handChosen]);
+  return selectionOptions[handChosen];
 }
 
 //const playerSelection = userPlay();
-//const playerSelection = "paper";
-//const computerSelection = computerPlay();
 
 //console.log(playRound(playerSelection, computerSelection));
-console.log("Player Choice: " + playerSelection);
+console.log("Computer Choice: " + computerPlay());
+console.log("Player Choice: " + userPlay());
 console.log("Player Score: " + playerScore);
 console.log("Computer Score: " + computerScore);
 //console.log(playRound[playerScore]);
